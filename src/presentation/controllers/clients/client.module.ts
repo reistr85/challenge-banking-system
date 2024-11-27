@@ -10,6 +10,7 @@ import { CreateAccountClientUseCase } from 'src/application/use-cases/clients/cr
 import { CreateAccountClientController } from './create-account-client.controller';
 import { AccountRepository } from 'src/infrastructure/repositories/sequelize/account.repository';
 import { AccountModel } from 'src/infrastructure/database/sequelize/models/account.model';
+import { IClientRepository } from 'src/domain/repositories/iclient.repository';
 
 @Module({
   imports: [SequelizeModule.forFeature([ClientModel, AccountModel])],
@@ -19,12 +20,20 @@ import { AccountModel } from 'src/infrastructure/database/sequelize/models/accou
     CreateAccountClientController,
   ],
   providers: [
-    ClientRepository,
+    {
+      provide: IClientRepository,
+      useClass: ClientRepository,
+    },
     AccountRepository,
     CreateClientUseCase,
     GetByIdClientUseCase,
     CreateAccountClientUseCase,
   ],
-  exports: [ClientRepository],
+  exports: [
+    {
+      provide: IClientRepository,
+      useClass: ClientRepository,
+    },
+  ],
 })
 export class ClientModule {}

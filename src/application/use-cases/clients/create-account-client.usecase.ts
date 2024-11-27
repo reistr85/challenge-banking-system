@@ -1,13 +1,13 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreatedAccountDto } from 'src/application/dtos/accounts/created-account.dto';
 import { AccountEntity } from 'src/domain/entities/account.entity';
+import { IClientRepository } from 'src/domain/repositories/iclient.repository';
 import { AccountRepository } from 'src/infrastructure/repositories/sequelize/account.repository';
-import { ClientRepository } from 'src/infrastructure/repositories/sequelize/client.repository';
 
 @Injectable()
 export class CreateAccountClientUseCase {
   constructor(
-    private readonly clientsRepository: ClientRepository,
+    private readonly clientsRepository: IClientRepository,
     private readonly accountsRepository: AccountRepository,
   ) {}
 

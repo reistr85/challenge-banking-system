@@ -3,9 +3,10 @@ import { InjectModel } from '@nestjs/sequelize';
 import { Injectable } from '@nestjs/common';
 import { ClientEntity } from 'src/domain/entities/client.entity';
 import { AccountModel } from 'src/infrastructure/database/sequelize/models/account.model';
+import { IClientRepository } from 'src/domain/repositories/iclient.repository';
 
 @Injectable()
-export class ClientRepository {
+export class ClientRepository implements IClientRepository {
   constructor(
     @InjectModel(ClientModel) private readonly clientModel: typeof ClientModel,
   ) {}

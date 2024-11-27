@@ -1,4 +1,5 @@
-import { Table, Column, Model, DataType } from 'sequelize-typescript';
+import { Table, Column, Model, DataType, HasMany } from 'sequelize-typescript';
+import { AccountModel } from './account.model';
 
 @Table({
   tableName: 'clients',
@@ -31,4 +32,7 @@ export class ClientModel extends Model<ClientModel> {
     allowNull: false,
   })
   cpf: string;
+
+  @HasMany(() => AccountModel)
+  accounts: AccountModel[];
 }

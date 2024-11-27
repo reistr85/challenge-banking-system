@@ -2,6 +2,7 @@ import { ClientModel } from 'src/infrastructure/database/sequelize/models/client
 import { InjectModel } from '@nestjs/sequelize';
 import { Injectable } from '@nestjs/common';
 import { ClientEntity } from 'src/domain/entities/client.entity';
+import { AccountModel } from 'src/infrastructure/database/sequelize/models/account.model';
 
 @Injectable()
 export class ClientRepository {
@@ -10,7 +11,6 @@ export class ClientRepository {
   ) {}
 
   async create(data: Partial<ClientEntity>): Promise<ClientModel> {
-    console.log(data);
     return this.clientModel.create(data);
   }
 
@@ -19,7 +19,9 @@ export class ClientRepository {
   }
 
   async findById(id: string): Promise<ClientModel | null> {
-    return this.clientModel.findByPk(id);
+    return this.clientModel.findByPk(id, {
+      include: [AccountModel],
+    });
   }
 
   async findByCpf(cpf: string): Promise<ClientModel | null> {

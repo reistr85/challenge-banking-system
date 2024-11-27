@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateClientDto } from 'src/application/dtos/clients/create-client.dto';
 import { CreatedClientDto } from 'src/application/dtos/clients/created-client.dto';
 import { ClientEntity } from 'src/domain/entities/client.entity';
-import { ClientRepository } from 'src/infrastructure/repositories/client.repository';
+import { ClientRepository } from 'src/infrastructure/repositories/sequelize/client.repository';
 
 @Injectable()
 export class CreateClientUseCase {

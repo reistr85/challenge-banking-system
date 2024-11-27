@@ -3,8 +3,8 @@ import { ClientModule } from './presentation/controllers/clients/client.module';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ClientModel } from './infrastructure/database/sequelize/models/client.model';
-
-console.log(process.env.DB_USER);
+import { AccountModule } from './presentation/controllers/accounts/account.module';
+import { AccountModel } from './infrastructure/database/sequelize/models/account.model';
 
 @Module({
   imports: [
@@ -25,8 +25,9 @@ console.log(process.env.DB_USER);
       }),
       inject: [ConfigService],
     }),
-    SequelizeModule.forFeature([ClientModel]),
+    SequelizeModule.forFeature([ClientModel, AccountModel]),
     ClientModule,
+    AccountModule,
   ],
   controllers: [],
   providers: [],

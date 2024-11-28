@@ -5,6 +5,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ClientModel } from './infrastructure/database/sequelize/models/client.model';
 import { AccountModule } from './presentation/controllers/accounts/account.module';
 import { AccountModel } from './infrastructure/database/sequelize/models/account.model';
+import { TransactionModule } from './presentation/controllers/transactions/transaction.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { AccountModel } from './infrastructure/database/sequelize/models/account
     SequelizeModule.forFeature([ClientModel, AccountModel]),
     ClientModule,
     AccountModule,
+    TransactionModule,
   ],
   controllers: [],
   providers: [],

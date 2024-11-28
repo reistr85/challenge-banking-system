@@ -12,8 +12,6 @@ import { CreateAccountUseCase } from 'src/application/use-cases/accounts/create-
 import { IAccountRepository } from 'src/domain/repositories/iaccount.repository';
 import { UpdateStatusAccountController } from './update-status-account.controller';
 import { UpdateStatusAccountUseCase } from 'src/application/use-cases/accounts/update-status-account.usecase';
-import { DepositAccountController } from './deposit-account.controller';
-import { DepositAccountUseCase } from 'src/application/use-cases/accounts/deposit-account.usecase';
 
 @Module({
   imports: [SequelizeModule.forFeature([AccountModel, ClientModel])],
@@ -21,7 +19,6 @@ import { DepositAccountUseCase } from 'src/application/use-cases/accounts/deposi
     GetByIdAccountController,
     CreateAccountController,
     UpdateStatusAccountController,
-    DepositAccountController,
   ],
   providers: [
     {
@@ -35,13 +32,8 @@ import { DepositAccountUseCase } from 'src/application/use-cases/accounts/deposi
     GetByIdAccountUseCase,
     CreateAccountUseCase,
     UpdateStatusAccountUseCase,
-    DepositAccountUseCase,
   ],
   exports: [
-    {
-      provide: IClientRepository,
-      useClass: ClientRepository,
-    },
     {
       provide: IAccountRepository,
       useClass: AccountRepository,

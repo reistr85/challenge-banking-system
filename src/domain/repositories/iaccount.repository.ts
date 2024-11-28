@@ -5,6 +5,7 @@ export abstract class IAccountRepository {
   abstract create(data: Partial<AccountEntity>): Promise<AccountModel>;
   abstract findAll(): Promise<AccountModel[]>;
   abstract findById(id: string): Promise<AccountModel | null>;
+  abstract findByNumber(number: number): Promise<AccountModel | null>;
   abstract update(
     id: string,
     data: Partial<AccountModel>,

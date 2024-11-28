@@ -38,10 +38,6 @@ import { IAccountRepository } from 'src/domain/repositories/iaccount.repository'
       provide: IClientRepository,
       useClass: ClientRepository,
     },
-    {
-      provide: IAccountRepository,
-      useClass: AccountRepository,
-    },
   ],
 })
 export class ClientModule {}

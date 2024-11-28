@@ -2,7 +2,7 @@ import { ApiProperty } from '@nestjs/swagger';
 import { Expose } from 'class-transformer';
 import { IsNumber } from 'class-validator';
 
-export class DepositTransactionDto {
+export class WithdrawalTransactionDto {
   @IsNumber()
   @ApiProperty({
     description: 'Number of the account',
@@ -14,7 +14,7 @@ export class DepositTransactionDto {
 
   @IsNumber()
   @ApiProperty({
-    description: 'Value to deposit',
+    description: 'Value to withdrawal',
     example: 10.0,
     required: true,
   })

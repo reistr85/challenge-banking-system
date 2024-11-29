@@ -1,6 +1,5 @@
 import { Body, Controller, HttpCode, HttpStatus, Post } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { CreatedAccountDto } from 'src/application/dtos/accounts/created-account.dto';
 import { WithdrawalTransactionDto } from 'src/application/dtos/transactions/withdrawal-transaction.dto';
 import { WithdrawnTransactionDto } from 'src/application/dtos/transactions/withdrawan-transaction.dto';
 import { WithdrawalTransactionUseCase } from 'src/application/use-cases/transactions/withdrawal-transaction.usecase';
@@ -18,7 +17,7 @@ export class WithdrawalTransactionController {
   @ApiResponse({
     status: HttpStatus.OK,
     description: 'Successfully created',
-    type: CreatedAccountDto,
+    type: WithdrawnTransactionDto,
   })
   @ApiResponse({
     status: HttpStatus.BAD_REQUEST,

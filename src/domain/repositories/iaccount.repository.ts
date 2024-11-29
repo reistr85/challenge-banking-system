@@ -1,5 +1,7 @@
 import { AccountModel } from 'src/infrastructure/database/sequelize/models/account.model';
 import { AccountEntity } from '../entities/account.entity';
+import { TransactionEntity } from '../entities/transaction.entity';
+import { TransactionModel } from 'src/infrastructure/database/sequelize/models/transaction.model';
 
 export abstract class IAccountRepository {
   abstract create(data: Partial<AccountEntity>): Promise<AccountModel>;
@@ -11,4 +13,7 @@ export abstract class IAccountRepository {
     data: Partial<AccountModel>,
   ): Promise<[number, AccountModel[]]>;
   abstract delete(id: string): Promise<number>;
+  abstract createTransaction(
+    data: Partial<TransactionEntity>,
+  ): Promise<TransactionModel>;
 }

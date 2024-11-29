@@ -23,7 +23,7 @@ export class CreateAccountUseCase {
       throw new NotFoundException('Client not found');
     }
 
-    const accountEntity = new AccountEntity(createAccountDto.clientId);
+    const accountEntity = new AccountEntity(createAccountDto);
     const accountCreated = await this.accountsRepository.create(accountEntity);
 
     return CreatedAccountDto.toDto({ id: accountCreated.id, ...accountEntity });

@@ -12,9 +12,12 @@ import { AccountRepository } from 'src/infrastructure/repositories/sequelize/acc
 import { AccountModel } from 'src/infrastructure/database/sequelize/models/account.model';
 import { IClientRepository } from 'src/domain/repositories/iclient.repository';
 import { IAccountRepository } from 'src/domain/repositories/iaccount.repository';
+import { TransactionModel } from 'src/infrastructure/database/sequelize/models/transaction.model';
 
 @Module({
-  imports: [SequelizeModule.forFeature([ClientModel, AccountModel])],
+  imports: [
+    SequelizeModule.forFeature([ClientModel, AccountModel, TransactionModel]),
+  ],
   controllers: [
     CreateClientController,
     GetByIdClientController,

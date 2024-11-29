@@ -37,7 +37,7 @@ export class AccountModel extends Model<AccountModel> {
   number: number;
 
   @Column({
-    type: DataType.DECIMAL,
+    type: DataType.FLOAT,
     allowNull: false,
   })
   balance: number;

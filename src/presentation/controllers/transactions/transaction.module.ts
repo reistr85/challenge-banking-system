@@ -9,9 +9,10 @@ import { TransferTransactionController } from './transfer-transaction.controller
 import { WithdrawalTransactionController } from './withdrawal-transaction.controller';
 import { TransferTransactionUseCase } from 'src/application/use-cases/transactions/transfer-transaction.usecase';
 import { WithdrawalTransactionUseCase } from 'src/application/use-cases/transactions/withdrawal-transaction.usecase';
+import { TransactionModel } from 'src/infrastructure/database/sequelize/models/transaction.model';
 
 @Module({
-  imports: [SequelizeModule.forFeature([AccountModel])],
+  imports: [SequelizeModule.forFeature([AccountModel, TransactionModel])],
   controllers: [
     DepositTransactionController,
     TransferTransactionController,

@@ -6,6 +6,7 @@ import { ClientModel } from './infrastructure/database/sequelize/models/client.m
 import { AccountModule } from './presentation/controllers/accounts/account.module';
 import { AccountModel } from './infrastructure/database/sequelize/models/account.model';
 import { TransactionModule } from './presentation/controllers/transactions/transaction.module';
+import { TransactionModel } from './infrastructure/database/sequelize/models/transaction.model';
 
 @Module({
   imports: [
@@ -26,7 +27,7 @@ import { TransactionModule } from './presentation/controllers/transactions/trans
       }),
       inject: [ConfigService],
     }),
-    SequelizeModule.forFeature([ClientModel, AccountModel]),
+    SequelizeModule.forFeature([ClientModel, AccountModel, TransactionModel]),
     ClientModule,
     AccountModule,
     TransactionModule,

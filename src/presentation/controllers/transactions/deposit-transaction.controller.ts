@@ -2,6 +2,7 @@ import { Body, Controller, HttpCode, HttpStatus, Post } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { CreatedAccountDto } from 'src/application/dtos/accounts/created-account.dto';
 import { DepositTransactionDto } from 'src/application/dtos/transactions/deposit-transaction.dto';
+import { DepositedTransactionDto } from 'src/application/dtos/transactions/deposited-transaction.dto';
 import { DepositTransactionUseCase } from 'src/application/use-cases/transactions/deposit-transaction.usecase';
 
 @Controller('transactions')
@@ -15,7 +16,7 @@ export class DepositTransactionController {
     description: 'Deposit in an account.',
   })
   @ApiResponse({
-    status: HttpStatus.NO_CONTENT,
+    status: HttpStatus.OK,
     description: 'Successfully created',
     type: CreatedAccountDto,
   })
@@ -23,10 +24,10 @@ export class DepositTransactionController {
     status: HttpStatus.BAD_REQUEST,
     description: 'Validation error in the data sent.',
   })
-  @HttpCode(HttpStatus.NO_CONTENT)
+  @HttpCode(HttpStatus.OK)
   async handle(
     @Body() depositTransactionDto: DepositTransactionDto,
-  ): Promise<void> {
-    await this.useCase.execute(depositTransactionDto);
+  ): Promise<DepositedTransactionDto> {
+    return await this.useCase.execute(depositTransactionDto);
   }
 }

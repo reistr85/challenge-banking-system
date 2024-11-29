@@ -12,9 +12,12 @@ import { CreateAccountUseCase } from 'src/application/use-cases/accounts/create-
 import { IAccountRepository } from 'src/domain/repositories/iaccount.repository';
 import { UpdateStatusAccountController } from './update-status-account.controller';
 import { UpdateStatusAccountUseCase } from 'src/application/use-cases/accounts/update-status-account.usecase';
+import { TransactionModel } from 'src/infrastructure/database/sequelize/models/transaction.model';
 
 @Module({
-  imports: [SequelizeModule.forFeature([AccountModel, ClientModel])],
+  imports: [
+    SequelizeModule.forFeature([AccountModel, ClientModel, TransactionModel]),
+  ],
   controllers: [
     GetByIdAccountController,
     CreateAccountController,

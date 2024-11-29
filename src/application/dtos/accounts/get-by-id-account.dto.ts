@@ -2,6 +2,7 @@ import { ApiProperty, PickType } from '@nestjs/swagger';
 import { Expose, plainToInstance } from 'class-transformer';
 import { CreatedAccountDto } from './created-account.dto';
 import { IsArray, IsObject } from 'class-validator';
+import { TransactionTypeEnum } from 'src/domain/enums/transaction-type.enum';
 
 export class GetByIdAccountDto extends PickType(CreatedAccountDto, [
   'id',
@@ -38,22 +39,28 @@ export class GetByIdAccountDto extends PickType(CreatedAccountDto, [
   transactions: [];
 
   static toDto(data): GetByIdAccountDto {
-    console.log(data.transactionsAsRecipient);
-
     const transactions = [
       ...data.transactionsAsRecipient.map((transaction) => ({
         id: transaction.id,
         accountNumberRecipient: transaction.accountNumberRecipient,
         type: transaction.type,
-        value: transaction.value,
+        value:
+          transaction.type === TransactionTypeEnum.WITHDRAW
+            ? transaction.value * -1
+            : transaction.value,
+        date: transaction.createdAt,
       })),
       ...data.transactionsAsOrigin.map((transaction) => ({
         id: transaction.id,
         accountNumberOrigin: transaction.accountNumberOrigin,
         type: transaction.type,
-        value: transaction.value,
+        value: transaction.value * -1,
+        date: transaction.createdAt,
       })),
     ];
+    transactions.sort(
+      (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime(),
+    );
 
     return plainToInstance(
       GetByIdAccountDto,

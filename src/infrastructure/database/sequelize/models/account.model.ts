@@ -5,9 +5,11 @@ import {
   DataType,
   BelongsTo,
   ForeignKey,
+  HasMany,
 } from 'sequelize-typescript';
 import { AccountStatusEnum } from 'src/domain/enums/account-status.enum';
 import { ClientModel } from './client.model';
+import { TransactionModel } from './transaction.model';
 
 @Table({
   tableName: 'accounts',
@@ -50,4 +52,18 @@ export class AccountModel extends Model<AccountModel> {
 
   @BelongsTo(() => ClientModel)
   client: ClientModel;
+
+  @HasMany(() => TransactionModel, {
+    foreignKey: 'accountNumberOrigin',
+    sourceKey: 'number',
+    as: 'transactionsAsOrigin',
+  })
+  transactionsAsOrigin: TransactionModel[];
+
+  @HasMany(() => TransactionModel, {
+    foreignKey: 'accountNumberRecipient',
+    sourceKey: 'number',
+    as: 'transactionsAsRecipient',
+  })
+  transactionsAsRecipient: TransactionModel[];
 }

@@ -18,12 +18,12 @@ export class CreateAccountUseCase {
     const client = await this.clientsRepository.findById(
       createAccountDto.clientId,
     );
-
     if (!client) {
       throw new NotFoundException('Client not found');
     }
 
     const accountEntity = new AccountEntity(createAccountDto);
+    delete accountEntity.id;
     const accountCreated = await this.accountsRepository.create(accountEntity);
 
     return CreatedAccountDto.toDto({ id: accountCreated.id, ...accountEntity });

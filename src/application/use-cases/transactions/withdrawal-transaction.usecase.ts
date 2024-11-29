@@ -25,10 +25,10 @@ export class WithdrawalTransactionUseCase {
     }
 
     const accountEntity = new AccountEntity(account);
-    const deposited = accountEntity.withdrawal(withdrawalTransactionDto.value);
+    const withdrawn = accountEntity.withdrawal(withdrawalTransactionDto.value);
 
-    if (!deposited) {
-      throw new InternalServerErrorException('Error depositing value');
+    if (!withdrawn) {
+      throw new InternalServerErrorException('Error withdrawn value');
     }
 
     const updatedAccount = await this.accountsRepository.update(

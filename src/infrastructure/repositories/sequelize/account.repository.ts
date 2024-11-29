@@ -25,7 +25,11 @@ export class AccountRepository {
 
   async findById(id: string): Promise<AccountModel | null> {
     return await this.accountModel.findByPk(id, {
-      include: [ClientModel],
+      include: [
+        ClientModel,
+        { model: TransactionModel, as: 'transactionsAsOrigin' },
+        { model: TransactionModel, as: 'transactionsAsRecipient' },
+      ],
     });
   }
 

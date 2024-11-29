@@ -30,8 +30,15 @@ export class ClientModel extends Model<ClientModel> {
   @Column({
     type: DataType.STRING,
     allowNull: false,
+    unique: true,
   })
   cpf: string;
+
+  @Column({
+    type: DataType.DATE,
+    allowNull: false,
+  })
+  birth: string;
 
   @HasMany(() => AccountModel)
   accounts: AccountModel[];

@@ -12,31 +12,34 @@ export class ClientRepository implements IClientRepository {
   ) {}
 
   async create(data: Partial<ClientEntity>): Promise<ClientModel> {
-    return this.clientModel.create(data);
+    return await this.clientModel.create(data);
   }
 
   async findAll(): Promise<ClientModel[]> {
-    return this.clientModel.findAll();
+    return await this.clientModel.findAll();
   }
 
   async findById(id: string): Promise<ClientModel | null> {
-    return this.clientModel.findByPk(id, {
+    return await this.clientModel.findByPk(id, {
       include: [AccountModel],
     });
   }
 
   async findByCpf(cpf: string): Promise<ClientModel | null> {
-    return this.clientModel.findOne({ where: { cpf } });
+    return await this.clientModel.findOne({ where: { cpf } });
   }
 
   async update(
     id: string,
     data: Partial<ClientModel>,
   ): Promise<[number, ClientModel[]]> {
-    return this.clientModel.update(data, { where: { id }, returning: true });
+    return await this.clientModel.update(data, {
+      where: { id },
+      returning: true,
+    });
   }
 
   async delete(id: string): Promise<number> {
-    return this.clientModel.destroy({ where: { id } });
+    return await this.clientModel.destroy({ where: { id } });
   }
 }

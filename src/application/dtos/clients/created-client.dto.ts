@@ -7,6 +7,7 @@ export class CreatedClientDto extends PickType(CreateClientDto, [
   'name',
   'cpf',
   'phone',
+  'birth',
 ]) {
   @IsUUID()
   @ApiProperty({

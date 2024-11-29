@@ -35,7 +35,7 @@ export class AccountRepository {
 
   async update(
     id: string,
-    data: Partial<AccountModel>,
+    data: Partial<AccountEntity>,
   ): Promise<[number, AccountModel[]]> {
     return await this.accountModel.update(data, {
       where: { id },

@@ -46,6 +46,24 @@ export class AccountEntity {
     return true;
   }
 
+  public withdrawal(value: number): boolean {
+    if (value <= 0) {
+      throw new BadRequestException('The value must be greater than zero');
+    }
+
+    if (!this.isActive()) {
+      throw new BadRequestException('The account is not active');
+    }
+
+    this.balance = this.balance - value;
+
+    if (this.balance < 0) {
+      throw new BadRequestException('Insufficient balance');
+    }
+
+    return true;
+  }
+
   private isActive(): boolean {
     return this.status === AccountStatusEnum.ACTIVE;
   }

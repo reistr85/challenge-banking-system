@@ -8,9 +8,9 @@ import {
   Patch,
 } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { CreatedAccountDto } from 'src/application/dtos/accounts/created-account.dto';
-import { UpdateStatusAccountDto } from 'src/application/dtos/accounts/update-status-account.dto';
-import { UpdateStatusAccountUseCase } from 'src/application/use-cases/accounts/update-status-account.usecase';
+import { CreatedAccountDto } from '@/application/dtos/accounts/created-account.dto';
+import { UpdateStatusAccountDto } from '@/application/dtos/accounts/update-status-account.dto';
+import { UpdateStatusAccountUseCase } from '@/application/use-cases/accounts/update-status-account.usecase';
 
 @Controller('accounts')
 @ApiTags('Accounts')

@@ -1,7 +1,7 @@
-import { AccountModel } from 'src/infrastructure/database/sequelize/models/account.model';
+import { AccountModel } from '@/infrastructure/database/sequelize/models/account.model';
 import { AccountEntity } from '../entities/account.entity';
 import { TransactionEntity } from '../entities/transaction.entity';
-import { TransactionModel } from 'src/infrastructure/database/sequelize/models/transaction.model';
+import { TransactionModel } from '@/infrastructure/database/sequelize/models/transaction.model';
 
 export abstract class IAccountRepository {
   abstract create(data: Partial<AccountEntity>): Promise<AccountModel>;

@@ -7,8 +7,8 @@ import {
   Post,
 } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { CreatedAccountDto } from 'src/application/dtos/accounts/created-account.dto';
-import { CreateAccountClientUseCase } from 'src/application/use-cases/clients/create-account-client.usecase';
+import { CreatedAccountDto } from '@/application/dtos/accounts/created-account.dto';
+import { CreateAccountClientUseCase } from '@/application/use-cases/clients/create-account-client.usecase';
 
 @Controller('clients')
 @ApiTags('Clients')

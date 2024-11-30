@@ -6,7 +6,7 @@ import {
   ForeignKey,
   BelongsTo,
 } from 'sequelize-typescript';
-import { TransactionTypeEnum } from 'src/domain/enums/transaction-type.enum';
+import { TransactionTypeEnum } from '@/domain/enums/transaction-type.enum';
 import { AccountModel } from './account.model';
 
 @Table({

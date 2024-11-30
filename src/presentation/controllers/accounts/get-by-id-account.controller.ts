@@ -6,8 +6,8 @@ import {
   ParseUUIDPipe,
 } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { GetByIdAccountDto } from 'src/application/dtos/accounts/get-by-id-account.dto';
-import { GetByIdAccountUseCase } from 'src/application/use-cases/accounts/get-by-id-account.usecase';
+import { GetByIdAccountDto } from '@/application/dtos/accounts/get-by-id-account.dto';
+import { GetByIdAccountUseCase } from '@/application/use-cases/accounts/get-by-id-account.usecase';
 
 @Controller('accounts')
 @ApiTags('Accounts')

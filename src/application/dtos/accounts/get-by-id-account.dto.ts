@@ -2,7 +2,7 @@ import { ApiProperty, PickType } from '@nestjs/swagger';
 import { Expose, plainToInstance } from 'class-transformer';
 import { CreatedAccountDto } from './created-account.dto';
 import { IsArray, IsObject } from 'class-validator';
-import { TransactionTypeEnum } from 'src/domain/enums/transaction-type.enum';
+import { TransactionTypeEnum } from '@/domain/enums/transaction-type.enum';
 
 export class GetByIdAccountDto extends PickType(CreatedAccountDto, [
   'id',

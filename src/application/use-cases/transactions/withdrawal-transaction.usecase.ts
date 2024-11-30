@@ -3,11 +3,11 @@ import {
   InternalServerErrorException,
   NotFoundException,
 } from '@nestjs/common';
-import { WithdrawalTransactionDto } from 'src/application/dtos/transactions/withdrawal-transaction.dto';
-import { WithdrawnTransactionDto } from 'src/application/dtos/transactions/withdrawan-transaction.dto';
-import { AccountEntity } from 'src/domain/entities/account.entity';
-import { TransactionTypeEnum } from 'src/domain/enums/transaction-type.enum';
-import { IAccountRepository } from 'src/domain/repositories/iaccount.repository';
+import { WithdrawalTransactionDto } from '@/application/dtos/transactions/withdrawal-transaction.dto';
+import { WithdrawnTransactionDto } from '@/application/dtos/transactions/withdrawan-transaction.dto';
+import { AccountEntity } from '@/domain/entities/account.entity';
+import { TransactionTypeEnum } from '@/domain/enums/transaction-type.enum';
+import { IAccountRepository } from '@/domain/repositories/iaccount.repository';
 
 @Injectable()
 export class WithdrawalTransactionUseCase {

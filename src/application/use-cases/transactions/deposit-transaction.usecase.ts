@@ -3,11 +3,11 @@ import {
   InternalServerErrorException,
   NotFoundException,
 } from '@nestjs/common';
-import { DepositTransactionDto } from 'src/application/dtos/transactions/deposit-transaction.dto';
-import { DepositedTransactionDto } from 'src/application/dtos/transactions/deposited-transaction.dto';
-import { AccountEntity } from 'src/domain/entities/account.entity';
-import { TransactionTypeEnum } from 'src/domain/enums/transaction-type.enum';
-import { IAccountRepository } from 'src/domain/repositories/iaccount.repository';
+import { DepositTransactionDto } from '@/application/dtos/transactions/deposit-transaction.dto';
+import { DepositedTransactionDto } from '@/application/dtos/transactions/deposited-transaction.dto';
+import { AccountEntity } from '@/domain/entities/account.entity';
+import { TransactionTypeEnum } from '@/domain/enums/transaction-type.enum';
+import { IAccountRepository } from '@/domain/repositories/iaccount.repository';
 
 @Injectable()
 export class DepositTransactionUseCase {

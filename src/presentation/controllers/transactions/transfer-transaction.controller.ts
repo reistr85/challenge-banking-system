@@ -1,8 +1,8 @@
 import { Body, Controller, HttpCode, HttpStatus, Post } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { TransferTransactionDto } from 'src/application/dtos/transactions/transfer-transaction.dto';
-import { TransferredTransactionDto } from 'src/application/dtos/transactions/transferred-transaction.dto';
-import { TransferTransactionUseCase } from 'src/application/use-cases/transactions/transfer-transaction.usecase';
+import { TransferTransactionDto } from '@/application/dtos/transactions/transfer-transaction.dto';
+import { TransferredTransactionDto } from '@/application/dtos/transactions/transferred-transaction.dto';
+import { TransferTransactionUseCase } from '@/application/use-cases/transactions/transfer-transaction.usecase';
 
 @Controller('transactions')
 @ApiTags('Transactions')

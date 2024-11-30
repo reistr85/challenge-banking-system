@@ -1,9 +1,9 @@
-import { ClientModel } from 'src/infrastructure/database/sequelize/models/client.model';
+import { ClientModel } from '@/infrastructure/database/sequelize/models/client.model';
 import { InjectModel } from '@nestjs/sequelize';
 import { Injectable } from '@nestjs/common';
-import { ClientEntity } from 'src/domain/entities/client.entity';
-import { AccountModel } from 'src/infrastructure/database/sequelize/models/account.model';
-import { IClientRepository } from 'src/domain/repositories/iclient.repository';
+import { ClientEntity } from '@/domain/entities/client.entity';
+import { AccountModel } from '@/infrastructure/database/sequelize/models/account.model';
+import { IClientRepository } from '@/domain/repositories/iclient.repository';
 
 @Injectable()
 export class ClientRepository implements IClientRepository {

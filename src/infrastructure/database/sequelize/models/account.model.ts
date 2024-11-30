@@ -7,7 +7,7 @@ import {
   ForeignKey,
   HasMany,
 } from 'sequelize-typescript';
-import { AccountStatusEnum } from 'src/domain/enums/account-status.enum';
+import { AccountStatusEnum } from '@/domain/enums/account-status.enum';
 import { ClientModel } from './client.model';
 import { TransactionModel } from './transaction.model';
 

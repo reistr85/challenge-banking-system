@@ -2,7 +2,7 @@ import { ApiProperty, PickType } from '@nestjs/swagger';
 import { CreateAccountDto } from './create-account.dto';
 import { Expose, plainToInstance } from 'class-transformer';
 import { IsEnum, IsNumber, IsUUID } from 'class-validator';
-import { AccountStatusEnum } from 'src/domain/enums/account-status.enum';
+import { AccountStatusEnum } from '@/domain/enums/account-status.enum';
 
 export class CreatedAccountDto extends PickType(CreateAccountDto, [
   'clientId',

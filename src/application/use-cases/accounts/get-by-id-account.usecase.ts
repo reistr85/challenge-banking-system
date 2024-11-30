@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { GetByIdAccountDto } from 'src/application/dtos/accounts/get-by-id-account.dto';
-import { IAccountRepository } from 'src/domain/repositories/iaccount.repository';
+import { GetByIdAccountDto } from '@/application/dtos/accounts/get-by-id-account.dto';
+import { IAccountRepository } from '@/domain/repositories/iaccount.repository';
 
 @Injectable()
 export class GetByIdAccountUseCase {

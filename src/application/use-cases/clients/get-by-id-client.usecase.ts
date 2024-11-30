@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { GetByIdClientDto } from 'src/application/dtos/clients/get-by-id-client.dto';
-import { IClientRepository } from 'src/domain/repositories/iclient.repository';
+import { GetByIdClientDto } from '@/application/dtos/clients/get-by-id-client.dto';
+import { IClientRepository } from '@/domain/repositories/iclient.repository';
 
 @Injectable()
 export class GetByIdClientUseCase {

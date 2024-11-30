@@ -1,15 +1,15 @@
 import { Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
-import { AccountModel } from 'src/infrastructure/database/sequelize/models/account.model';
-import { AccountRepository } from 'src/infrastructure/repositories/sequelize/account.repository';
-import { IAccountRepository } from 'src/domain/repositories/iaccount.repository';
+import { AccountModel } from '@/infrastructure/database/sequelize/models/account.model';
+import { AccountRepository } from '@/infrastructure/repositories/sequelize/account.repository';
+import { IAccountRepository } from '@/domain/repositories/iaccount.repository';
 import { DepositTransactionController } from './deposit-transaction.controller';
-import { DepositTransactionUseCase } from 'src/application/use-cases/transactions/deposit-transaction.usecase';
+import { DepositTransactionUseCase } from '@/application/use-cases/transactions/deposit-transaction.usecase';
 import { TransferTransactionController } from './transfer-transaction.controller';
 import { WithdrawalTransactionController } from './withdrawal-transaction.controller';
-import { TransferTransactionUseCase } from 'src/application/use-cases/transactions/transfer-transaction.usecase';
-import { WithdrawalTransactionUseCase } from 'src/application/use-cases/transactions/withdrawal-transaction.usecase';
-import { TransactionModel } from 'src/infrastructure/database/sequelize/models/transaction.model';
+import { TransferTransactionUseCase } from '@/application/use-cases/transactions/transfer-transaction.usecase';
+import { WithdrawalTransactionUseCase } from '@/application/use-cases/transactions/withdrawal-transaction.usecase';
+import { TransactionModel } from '@/infrastructure/database/sequelize/models/transaction.model';
 
 @Module({
   imports: [SequelizeModule.forFeature([AccountModel, TransactionModel])],

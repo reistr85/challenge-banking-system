@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Expose } from 'class-transformer';
 import { IsEnum } from 'class-validator';
-import { AccountStatusEnum } from 'src/domain/enums/account-status.enum';
+import { AccountStatusEnum } from '@/domain/enums/account-status.enum';
 
 export class UpdateStatusAccountDto {
   @IsEnum(AccountStatusEnum)

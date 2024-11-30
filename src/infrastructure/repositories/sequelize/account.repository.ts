@@ -1,10 +1,10 @@
-import { AccountModel } from 'src/infrastructure/database/sequelize/models/account.model';
+import { AccountModel } from '@/infrastructure/database/sequelize/models/account.model';
 import { InjectModel } from '@nestjs/sequelize';
 import { Injectable } from '@nestjs/common';
-import { AccountEntity } from 'src/domain/entities/account.entity';
-import { ClientModel } from 'src/infrastructure/database/sequelize/models/client.model';
-import { TransactionModel } from 'src/infrastructure/database/sequelize/models/transaction.model';
-import { TransactionEntity } from 'src/domain/entities/transaction.entity';
+import { AccountEntity } from '@/domain/entities/account.entity';
+import { ClientModel } from '@/infrastructure/database/sequelize/models/client.model';
+import { TransactionModel } from '@/infrastructure/database/sequelize/models/transaction.model';
+import { TransactionEntity } from '@/domain/entities/transaction.entity';
 
 @Injectable()
 export class AccountRepository {

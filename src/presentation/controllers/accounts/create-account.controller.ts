@@ -1,8 +1,8 @@
 import { Body, Controller, HttpStatus, Post } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { CreateAccountDto } from 'src/application/dtos/accounts/create-account.dto';
-import { CreatedAccountDto } from 'src/application/dtos/accounts/created-account.dto';
-import { CreateAccountUseCase } from 'src/application/use-cases/accounts/create-account.usecase';
+import { CreateAccountDto } from '@/application/dtos/accounts/create-account.dto';
+import { CreatedAccountDto } from '@/application/dtos/accounts/created-account.dto';
+import { CreateAccountUseCase } from '@/application/use-cases/accounts/create-account.usecase';
 
 @Controller('accounts')
 @ApiTags('Accounts')

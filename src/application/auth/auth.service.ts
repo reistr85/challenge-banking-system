@@ -1,6 +1,6 @@
 import { IClientRepository } from '@/domain/repositories/iclient.repository';
 import { Injectable, UnauthorizedException } from '@nestjs/common';
-import { JwtService } from '@nestjs/jwt';
+import { JwtService, JwtSignOptions } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 
 @Injectable()
@@ -21,9 +21,14 @@ export class AuthService {
       throw new UnauthorizedException('Invalid credentials');
     }
 
-    const payload = { cpf: client.cpf, sub: client.id };
+    const options: JwtSignOptions = {
+      secret: process.env.JWT_SECRET_KEY,
+      expiresIn: '1h',
+    };
+
+    const payload = { cpf: client.cpf, sub: { id: client.id } };
     return {
-      access_token: this.jwtService.sign(payload),
+      access_token: await this.jwtService.sign(payload, options),
     };
   }
 }

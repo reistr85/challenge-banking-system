@@ -4,19 +4,16 @@ import {
   HttpStatus,
   Param,
   ParseUUIDPipe,
-  UseGuards,
 } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { GetByIdClientDto } from '@/application/dtos/clients/get-by-id-client.dto';
 import { GetByIdClientUseCase } from '@/application/use-cases/clients/get-by-id-client.usecase';
-import { JwtAuthGuard } from '@/application/auth/jwt-auth.guard';
 
 @Controller('clients')
 @ApiTags('Clients')
 export class GetByIdClientController {
   constructor(private readonly useCase: GetByIdClientUseCase) {}
 
-  @UseGuards(JwtAuthGuard)
   @Get(':id')
   @ApiOperation({
     summary: 'Get by id Client',

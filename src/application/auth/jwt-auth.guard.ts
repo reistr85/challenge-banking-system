@@ -4,10 +4,8 @@ import {
   Injectable,
   UnauthorizedException,
 } from '@nestjs/common';
-import { AuthGuard } from '@nestjs/passport';
 import { Request } from 'express';
 import { JwtService } from '@nestjs/jwt';
-import { ClientRepository } from '@/infrastructure/repositories/sequelize/client.repository';
 import { InjectModel } from '@nestjs/sequelize';
 import { ClientModel } from '@/infrastructure/database/sequelize/models/client.model';
 import { Reflector } from '@nestjs/core';
@@ -34,16 +32,14 @@ export class JwtAuthGuard implements CanActivate {
     const token = this.extractTokenFromHeader(request);
     console.log(token);
     if (!token) {
-      throw new UnauthorizedException('AuthErrorMessages.TokenNotProvided');
+      throw new UnauthorizedException('Unauthorized');
     }
 
     try {
-      console.log(token);
-
       const payload = await this.jwtService.verifyAsync(token, {
         secret: 'your_secret_key_here',
       });
-      console.log(payload);
+
       const client = await this.clientModel.findOne({
         where: { cpf: payload.cpf },
       });
@@ -53,7 +49,7 @@ export class JwtAuthGuard implements CanActivate {
       }
       request['client'] = { payload };
     } catch (error) {
-      throw new UnauthorizedException('AuthErrorMessages.AuthenticationFailed');
+      throw new UnauthorizedException('Unauthorized');
     }
 
     return true;

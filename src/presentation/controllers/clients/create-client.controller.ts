@@ -3,12 +3,14 @@ import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { CreateClientDto } from '@/application/dtos/clients/create-client.dto';
 import { CreatedClientDto } from '@/application/dtos/clients/created-client.dto';
 import { CreateClientUseCase } from '@/application/use-cases/clients/create-client.usecase';
+import { Public } from '@/application/auth/public';
 
 @Controller('clients')
 @ApiTags('Clients')
 export class CreateClientController {
   constructor(private readonly useCase: CreateClientUseCase) {}
 
+  @Public()
   @Post()
   @ApiOperation({
     summary: 'Create Client',

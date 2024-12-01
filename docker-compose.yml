@@ -1,22 +1,46 @@
-version: '3.7'
+version: '3.8'
 
 services:
-  db-postgres-challenge-banking-system:
-    restart: always
-    image: postgres:15
-    container_name: db-challenge-banking-system
-    healthcheck:
-      test: ['CMD', 'pg_isready', '-U', 'postgres']
-    volumes:
-      - ./.docker/database/postgres:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_USER=postgres
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nestjs-app
     ports:
-      - '5433:5432'
+      - '3000:3000'
+    environment:
+      - NODE_ENV=develop
+      - DATABASE_HOST=postgres
+      - DATABASE_PORT=5432
+      - DATABASE_USER=nest_user
+      - DATABASE_PASSWORD=nest_password
+      - DATABASE_NAME=nestjs_db
+    depends_on:
+      - postgres
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    command: yarn start:dev
     networks:
-      - my-networks
+      - banking-network
+
+  postgres:
+    image: postgres:15
+    container_name: postgres-db
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: nest_user
+      POSTGRES_PASSWORD: nest_password
+      POSTGRES_DB: nestjs_db
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - banking-network
+
+volumes:
+  pgdata:
 
 networks:
-  my-networks:
+  banking-network:
     driver: bridge

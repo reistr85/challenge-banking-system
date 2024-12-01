@@ -7,6 +7,7 @@ import { AccountModule } from './presentation/controllers/accounts/account.modul
 import { AccountModel } from './infrastructure/database/sequelize/models/account.model';
 import { TransactionModule } from './presentation/controllers/transactions/transaction.module';
 import { TransactionModel } from './infrastructure/database/sequelize/models/transaction.model';
+import { AuthModule } from './application/auth/auth.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { TransactionModel } from './infrastructure/database/sequelize/models/tra
       inject: [ConfigService],
     }),
     SequelizeModule.forFeature([ClientModel, AccountModel, TransactionModel]),
+    AuthModule,
     ClientModule,
     AccountModule,
     TransactionModule,

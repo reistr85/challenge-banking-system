@@ -35,6 +35,7 @@ export class AccountModel extends Model<AccountModel> {
   @Column({
     type: DataType.INTEGER,
     allowNull: false,
+    unique: true,
   })
   number: number;
 

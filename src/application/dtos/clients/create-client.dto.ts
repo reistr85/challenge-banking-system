@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Expose } from 'class-transformer';
-import { IsDate, IsDateString, IsString, Length } from 'class-validator';
+import { IsDate, IsDateString, IsString, Length, Min } from 'class-validator';
 import { IsCPF } from 'class-validator-cpf';
 
 export class CreateClientDto {
@@ -33,6 +33,15 @@ export class CreateClientDto {
   @Expose()
   @Length(11, 11)
   cpf: string;
+
+  @IsString()
+  @ApiProperty({
+    description: 'Password of the client',
+    example: '12345678',
+    required: true,
+  })
+  @Expose()
+  password: string;
 
   @IsDateString()
   @ApiProperty({

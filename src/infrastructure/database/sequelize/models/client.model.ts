@@ -35,6 +35,12 @@ export class ClientModel extends Model<ClientModel> {
   cpf: string;
 
   @Column({
+    type: DataType.STRING,
+    allowNull: false,
+  })
+  password: string;
+
+  @Column({
     type: DataType.DATE,
     allowNull: false,
   })

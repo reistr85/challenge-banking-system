@@ -3,6 +3,7 @@ import { CreateClientDto } from '@/application/dtos/clients/create-client.dto';
 import { CreatedClientDto } from '@/application/dtos/clients/created-client.dto';
 import { ClientEntity } from '@/domain/entities/client.entity';
 import { IClientRepository } from '@/domain/repositories/iclient.repository';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class CreateClientUseCase {
@@ -10,7 +11,12 @@ export class CreateClientUseCase {
 
   async execute(createClientDto: CreateClientDto): Promise<CreatedClientDto> {
     const clientEntity = new ClientEntity(createClientDto);
-    const clientCreated = await this.clientsRepository.create(clientEntity);
+
+    const hashedPassword = await bcrypt.hash(createClientDto.password, 10);
+    const clientCreated = await this.clientsRepository.create({
+      ...clientEntity,
+      password: hashedPassword,
+    });
 
     return CreatedClientDto.toDto({ id: clientCreated.id, ...clientEntity });
   }

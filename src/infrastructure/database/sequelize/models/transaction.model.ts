@@ -1,11 +1,4 @@
-import {
-  Table,
-  Column,
-  Model,
-  DataType,
-  ForeignKey,
-  BelongsTo,
-} from 'sequelize-typescript';
+import { Table, Column, Model, DataType } from 'sequelize-typescript';
 import { TransactionTypeEnum } from '@/domain/enums/transaction-type.enum';
 import { AccountModel } from './account.model';
 
@@ -23,14 +16,12 @@ export class TransactionModel extends Model<TransactionModel> {
   })
   id: string;
 
-  @ForeignKey(() => AccountModel)
   @Column({
     type: DataType.INTEGER,
     allowNull: true,
   })
   accountNumberOrigin: number;
 
-  @ForeignKey(() => AccountModel)
   @Column({
     type: DataType.INTEGER,
     allowNull: false,
@@ -49,15 +40,6 @@ export class TransactionModel extends Model<TransactionModel> {
   })
   value: number;
 
-  @BelongsTo(() => AccountModel, {
-    foreignKey: 'accountNumberOrigin',
-    as: 'originAccount',
-  })
   originAccount: AccountModel;
-
-  @BelongsTo(() => AccountModel, {
-    foreignKey: 'accountNumberRecipient',
-    as: 'recipientAccount',
-  })
   recipientAccount: AccountModel;
 }

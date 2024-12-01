@@ -4,17 +4,20 @@ export class ClientEntity {
   private cpf: string;
   private phone: string;
   private birth: string;
+  private password: string;
 
   constructor({
     name,
     cpf,
     phone,
     birth,
+    password,
   }: {
     name: string;
     cpf: string;
     phone: string;
     birth: string;
+    password: string;
   }) {
     if (!this.validatePhone(phone)) {
       throw new Error('Invalid Phone');
@@ -32,6 +35,7 @@ export class ClientEntity {
     this.phone = phone;
     this.cpf = cpf;
     this.birth = birth;
+    this.password = password;
   }
 
   private validatePhone(phone: string): boolean {

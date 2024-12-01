@@ -13,6 +13,7 @@ import { AccountModel } from '@/infrastructure/database/sequelize/models/account
 import { IClientRepository } from '@/domain/repositories/iclient.repository';
 import { IAccountRepository } from '@/domain/repositories/iaccount.repository';
 import { TransactionModel } from '@/infrastructure/database/sequelize/models/transaction.model';
+import { JwtService } from '@nestjs/jwt';
 
 @Module({
   imports: [
@@ -35,12 +36,14 @@ import { TransactionModel } from '@/infrastructure/database/sequelize/models/tra
     CreateClientUseCase,
     GetByIdClientUseCase,
     CreateAccountClientUseCase,
+    JwtService,
   ],
   exports: [
     {
       provide: IClientRepository,
       useClass: ClientRepository,
     },
+    JwtService,
   ],
 })
 export class ClientModule {}

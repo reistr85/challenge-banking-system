@@ -146,7 +146,7 @@ A aplicação segue a arquitetura de camadas baseada em DDD, dividida nas seguin
    ```bash
    Instalar o Docker e docker-compose
 
-3. Start via Docker:
+3. Start Banco de Dados via Docker:
    ```bash
    docker-compose up --build
 

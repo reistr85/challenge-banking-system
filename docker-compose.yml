@@ -1,29 +1,6 @@
 version: '3.8'
 
 services:
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: nestjs-app
-    ports:
-      - '3000:3000'
-    environment:
-      - NODE_ENV=develop
-      - DATABASE_HOST=postgres
-      - DATABASE_PORT=5432
-      - DATABASE_USER=nest_user
-      - DATABASE_PASSWORD=nest_password
-      - DATABASE_NAME=nestjs_db
-    depends_on:
-      - postgres
-    volumes:
-      - .:/usr/src/app
-      - /usr/src/app/node_modules
-    command: yarn start:dev
-    networks:
-      - banking-network
-
   postgres:
     image: postgres:15
     container_name: postgres-db
